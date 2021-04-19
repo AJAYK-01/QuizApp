@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:quiztask/models.dart/questions.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class QuizController extends GetxController {
   var index = 0.obs;
@@ -7,22 +7,29 @@ class QuizController extends GetxController {
   var correct = 0.obs;
   var wrong = 0.obs;
   final questions = [].obs;
+  var isLoading = true.obs;
 
   @override
-  void onInit() {
-    questions.assignAll(sample_data);
-    // print(questions);
+  void onInit() async {
     super.onInit();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      final dbData = await firestore.collection("quizdata").get();
+      final quizdata = dbData.docs.map((doc) => doc.data()).toList()[0]['data'];
+
+      questions.assignAll(quizdata);
+    } catch (e) {
+      print("Firebase data fetching error");
+    } finally {
+      isLoading(false);
+    }
   }
 
   void onNext() {
-    // if (option == questions[index.value].value['answer_index']) {
-    //   score.value += 10;
-    //   correct.value++;
-    // } else {
-    //   wrong.value++;
-    // }
-    print("Next qn control ${index.value + 1}");
     index.value++;
   }
 

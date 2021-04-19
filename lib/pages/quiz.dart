@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quiztask/controllers/quiz_controller.dart';
 import 'package:quiztask/widgets/manageopt.dart';
 import 'package:quiztask/widgets/questioncard.dart';
 
 class QuizPage extends StatelessWidget {
-  // final question;
-
-  // const QuizPage({Key key, this.question}) : super(key: key);
-
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -23,23 +21,27 @@ class QuizPage extends StatelessWidget {
               color: Colors.purple[200],
             ),
           ),
-          Column(
-            children: [
-              Spacer(
-                flex: 4,
-              ),
-              Expanded(
-                flex: 5,
-                child: QuestionCard(),
-              ),
-              Spacer(
-                flex: 1,
-              ),
-              Options(),
-              Spacer(
-                flex: 1,
-              )
-            ],
+          GetX<QuizController>(
+            builder: (controller) => controller.isLoading.value
+                ? Center(child: CircularProgressIndicator())
+                : Column(
+                    children: [
+                      Spacer(
+                        flex: 4,
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: QuestionCard(),
+                      ),
+                      Spacer(
+                        flex: 1,
+                      ),
+                      Options(),
+                      Spacer(
+                        flex: 1,
+                      )
+                    ],
+                  ),
           ),
         ],
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiztask/controllers/quiz_controller.dart';
-import 'package:quiztask/models.dart/questions.dart';
 import 'package:quiztask/pages/result.dart';
 import '../pages/quiz.dart';
 import '../pages/welcome.dart';
@@ -9,10 +8,6 @@ import 'package:quiztask/widgets/optionpill.dart';
 import 'package:quiztask/widgets/redbutton.dart';
 
 class Options extends StatefulWidget {
-  // final correct;
-  // final options;
-
-  // const Options({Key key, this.correct, this.options}) : super(key: key);
   @override
   _OptionsState createState() => _OptionsState();
 }
@@ -30,7 +25,7 @@ class _OptionsState extends State<Options> {
     QuizController controller = Get.find();
 
     final int index = controller.index.value;
-    final List<String> options = controller.questions[index]['options'];
+    final options = controller.questions[index]['options'];
 
     checkans() {
       if (selected == null) {
@@ -38,11 +33,6 @@ class _OptionsState extends State<Options> {
             colorText: Colors.white, backgroundColor: Colors.red);
       } else {
         int ans = controller.checkAns(selected);
-        // if (isCorrect) {
-
-        // } else {
-        //   print("Naahda");
-        // }
 
         setState(() {
           checked = true;
@@ -57,7 +47,6 @@ class _OptionsState extends State<Options> {
         Get.to(Welcome());
         Get.off(QuizPage());
       } else {
-        // controller.onReset();
         Get.to(Result());
       }
     }

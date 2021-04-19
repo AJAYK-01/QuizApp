@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "651272592119",
+    "project_id": "getx-quizapp",
+    "storage_bucket": "getx-quizapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651272592119:android:70002b830abe267c0651f2",
+        "android_client_info": {
+          "package_name": "com.example.quiztask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651272592119-r15jfpb3ng21i5ajqm7f9n31ahr8v9bb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO8E-uc3uwI03w0PXzgLi1g5v_0_MiJOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651272592119-r15jfpb3ng21i5ajqm7f9n31ahr8v9bb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
