@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiztask/controllers/quiz_controller.dart';
 import 'package:quiztask/models.dart/questions.dart';
 import 'package:quiztask/pages/quiz.dart';
 import 'package:quiztask/pages/welcome.dart';
@@ -8,15 +9,16 @@ import 'package:quiztask/widgets/scorecard.dart';
 import '../constants.dart';
 
 class Result extends StatelessWidget {
-  final percent, total, correct, wrong;
-
-  const Result({Key key, this.percent, this.total, this.correct, this.wrong})
-      : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
+    QuizController controller = Get.find();
+    final percent = 100;
+    final total = controller.questions.length;
+    final correct = controller.correct.value;
+    final wrong = controller.wrong.value;
     return Scaffold(
       body: Stack(
         children: [
@@ -36,7 +38,7 @@ class Result extends StatelessWidget {
               Spacer(
                 flex: 2,
               ),
-              ScoreCard(score: 50),
+              ScoreCard(score: controller.score.value),
               Spacer(flex: 1),
               Expanded(
                   flex: 5,
@@ -55,13 +57,19 @@ class Result extends StatelessWidget {
                       children: [
                         FloatingActionButton(
                             child: Icon(Icons.replay),
-                            onPressed: () =>
-                                Get.off(QuizPage(question: sample_data[0]))),
+                            onPressed: () {
+                              controller.onReset();
+                              Get.offAll(Welcome());
+                              Get.to(QuizPage());
+                            }),
                         Text("Play Again"),
                         Container(height: 12),
                         FloatingActionButton(
                             child: Icon(Icons.home),
-                            onPressed: () => Get.offAll(Welcome())),
+                            onPressed: () {
+                              controller.onReset();
+                              Get.offAll(Welcome());
+                            }),
                         Text("Go home")
                       ],
                     ),

@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quiztask/controllers/quiz_controller.dart';
 
 import '../constants.dart';
 
 class QuestionCard extends StatelessWidget {
-  final question;
-  final index;
-  const QuestionCard({
-    Key key,
-    this.question,
-    this.index,
-  }) : super(key: key);
+  // final question;
+  // final index;
+  // const QuestionCard({
+  //   Key key,
+  //   this.question,
+  //   this.index,
+  // }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
+    QuizController controller = Get.find();
+
+    final index = controller.index.value;
+    final String question = controller.questions[index]['question'];
+    print(question);
 
     return Row(
       children: [
@@ -28,7 +36,7 @@ class QuestionCard extends StatelessWidget {
                   flex: 4,
                 ),
                 Text(
-                  "Question $index of 5",
+                  "Question ${index + 1} of 5",
                   style: TextStyle(color: Colors.purple, fontSize: 16),
                 ),
                 Spacer(

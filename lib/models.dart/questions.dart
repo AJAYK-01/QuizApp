@@ -23,13 +23,19 @@ const List sample_data = [
   {
     "id": 3,
     "question": "A memory location that holds a single letter or number.",
-    "options": ['Double', 'Int', 'Char', 'Word'],
-    "answer_index": 2,
+    "options": ['Double', 'Char', 'Int', 'Word'],
+    "answer_index": 1,
   },
   {
     "id": 4,
     "question": "What command do you use to output data to the screen?",
     "options": ['Cin', 'Count>>', 'Cout', 'Output>>'],
+    "answer_index": 2,
+  },
+  {
+    "id": 5,
+    "question": "Who created Linux.",
+    "options": ['Bill Gates', 'Elon Musk', 'Linus Torvalds', 'Steve Jobs'],
     "answer_index": 2,
   },
 ];

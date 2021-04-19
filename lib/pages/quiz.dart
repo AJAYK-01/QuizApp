@@ -3,9 +3,9 @@ import 'package:quiztask/widgets/manageopt.dart';
 import 'package:quiztask/widgets/questioncard.dart';
 
 class QuizPage extends StatelessWidget {
-  final question;
+  // final question;
 
-  const QuizPage({Key key, this.question}) : super(key: key);
+  // const QuizPage({Key key, this.question}) : super(key: key);
 
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -26,21 +26,19 @@ class QuizPage extends StatelessWidget {
           Column(
             children: [
               Spacer(
-                flex: 2,
+                flex: 4,
               ),
               Expanded(
-                flex: 4,
-                child: QuestionCard(
-                    question: question['question'], index: question['id']),
+                flex: 5,
+                child: QuestionCard(),
               ),
               Spacer(
                 flex: 1,
               ),
-              Expanded(
-                  flex: 7,
-                  child: Options(
-                      options: question['options'],
-                      correct: question['answer_index']))
+              Options(),
+              Spacer(
+                flex: 1,
+              )
             ],
           ),
         ],

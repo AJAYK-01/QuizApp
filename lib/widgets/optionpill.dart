@@ -24,23 +24,24 @@ class OptionPill extends StatelessWidget {
         margin: const EdgeInsets.only(top: 14, left: 30, right: 30),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(color: color, width: 2)),
+            border: Border.all(color: color, width: 4)),
         child: Row(
           children: [
             Spacer(
               flex: 1,
             ),
             Expanded(
-              child: Text(option ?? "OptionText"),
+              child: Text(option ?? "OptionText",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
               flex: 16,
             ),
-            Expanded(
-              child: icon,
-              flex: 2,
-            ),
-            Spacer(
-              flex: 1,
-            )
+            // Expanded(
+            //   child: icon,
+            //   flex: 2,
+            // ),
+            // Spacer(
+            //   flex: 1,
+            // )
           ],
         ),
       ),
